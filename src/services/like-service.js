@@ -8,14 +8,14 @@ export default class LikeService{
     
     async toggleLike(modelId, modelType, userId){
         if (modelType == 'Tweet'){
-            var likeable = (await this.likeRepository.get(modelId)).populate({ path: 'likes' });
+            var likeable = await this.tweetRepository.find(modelId);
         } else if (modelType == 'Comment') {
             // TODO
         } else {
             throw new Error("Unknown model type");
         }
         const exists = await this.likeRepository.findByUserAndLikeable({
-            userId: userId,
+            user: userId,
             onModel: modelType,
             likeable: modelId,
         })

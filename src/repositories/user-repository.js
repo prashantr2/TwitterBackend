@@ -6,5 +6,5 @@ export default class UserRepository extends CrudRepository {
         super(User); 
     }
     
-    
+     
 }
