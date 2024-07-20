@@ -11,7 +11,7 @@ const likeSchema = new mongoose.Schema({
         required: true,
         refPath: 'onModel'
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'

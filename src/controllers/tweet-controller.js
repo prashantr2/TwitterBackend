@@ -21,3 +21,23 @@ export async function createTweet(req, res) {
         });
     }
 }
+
+export async function getTweet(req, res) {
+    try {
+        const response = await tweetService.get(req.params.id);
+        return res.status(200).json({
+            success: true,
+            msg: "Successfully get a tweet",
+            data: response,
+            err: {}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            msg: "Something went wrong in tweet controller",
+            data: {},
+            err: error
+        });
+    }
+}

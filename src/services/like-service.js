@@ -15,7 +15,7 @@ export default class LikeService{
             throw new Error("Unknown model type");
         }
         const exists = await this.likeRepository.findByUserAndLikeable({
-            user: userId,
+            userId: userId,
             onModel: modelType,
             likeable: modelId,
         })
@@ -26,7 +26,7 @@ export default class LikeService{
             var isAdded = false;
         } else {
             const newLike = await this.likeRepository.create({
-                user: userId,
+                userId: userId,
                 onModel: modelType,
                 likeable: modelId
             })
