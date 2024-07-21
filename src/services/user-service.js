@@ -5,8 +5,12 @@ export default class UserService{
         this.userRepository = new UserRepository();
     }
     
-    async createUser(data){
-        const user = await this.userRepository.create(data);
-        return user;
+    async signupUser(data){
+        try {
+            const user = await this.userRepository.create(data);
+            return user;
+        } catch (error) {
+            throw error;    
+        }
     }
 }

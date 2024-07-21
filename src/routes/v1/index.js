@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser } from '../../controllers/user-controller.js';
+import { signupUser } from '../../controllers/user-controller.js';
 import { createTweet, getTweet } from '../../controllers/tweet-controller.js';
 import { createComment } from '../../controllers/comment-controller.js';
 import { toggleLike } from '../../controllers/like-controller.js'
@@ -14,7 +14,7 @@ router.get('/tweets/:id', getTweet);
 router.post('/likes/toggle', toggleLike);
 
 // Users
-router.post('/users', createUser);
+router.post('/users', signupUser);
 
 // Comments
 router.post('/comments', createComment);

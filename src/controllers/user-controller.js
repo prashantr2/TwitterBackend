@@ -2,9 +2,13 @@ import UserService from "../services/user-service.js";
 
 const userService = new UserService();
 
-export async function createUser(req, res) {
+export async function signupUser(req, res) {
     try {
-        const response = await userService.createUser(req.body);
+        const response = await userService.signupUser({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        });
         return res.status(201).json({
             success: true,
             msg: "Successfully created a new user",
@@ -12,7 +16,6 @@ export async function createUser(req, res) {
             err: {}
         })
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Something went wrong in user controller",
