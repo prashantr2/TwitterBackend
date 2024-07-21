@@ -15,13 +15,19 @@ router.post('/tweets',
 router.get('/tweets/:id', getTweet);
 
 // Likes
-router.post('/likes/toggle', toggleLike);
+router.post('/likes/toggle', 
+    authenticate, 
+    toggleLike
+);
 
 // Users
 router.post('/users', signupUser);
 router.post('/users/login', loginUser);
 
 // Comments
-router.post('/comments', createComment);
+router.post('/comments', 
+    authenticate, 
+    createComment
+);
 
 export default router;
