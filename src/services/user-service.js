@@ -13,4 +13,20 @@ export default class UserService{
             throw error;    
         }
     }
+    
+    async loginUser({ email, password }) {
+        try {
+            const user = await this.userRepository.findBy({ email });
+            if (!user) {
+                throw Error("No user found");
+            }
+            if (!user.comparePassword(password)) {
+                throw Error("No user found");
+            }
+            const token = user.generateJWT();
+            return { token };
+        } catch (error) {
+            throw error;
+        } 
+    }
 }

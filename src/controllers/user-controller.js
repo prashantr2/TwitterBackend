@@ -24,3 +24,21 @@ export async function signupUser(req, res) {
         });
     }
 }
+
+export async function loginUser(req, res) {
+    try {
+        const response = await userService.loginUser({ email: req.body.email, password: req.body.password });
+        return res.status(200).json({
+            success: true,
+            msg: "Successfully logged in the user",
+            data: response,
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            msg: error.message,
+            data: {},
+            err: error
+        });
+    }
+}
